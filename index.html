@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <title>Document</title>
+
+    <title>Document</title>
+    <style>
+        body{
+            height: 100%;
+            width: 100%;
+            background: black;
+            background-image: url(bg-3.jpg);
+            background-size: cover;
+            /* filter: blur(8px);
+            -webkit-filter: blur(8px); */
+            
+
+        }
+        .box{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            top: 18%;
+            left: 34%;
+            width: 400px;
+            height: 450px;
+            border: 2px solid rgb(219, 219, 219);
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 20px gray;
+            
+            /* margin: 20px; */
+            /* padding: 10px; */
+        }
+        .items{
+            display: flex;
+            flex-wrap: wrap;
+            height: auto;
+            width: 350px;
+            margin: 5px;
+            margin-left: 23px;
+            text-align: center;
+        }
+        .btn{
+            height: auto;
+            width: 14.7%;
+            margin: 5px;
+            box-sizing: content-box;
+        }
+        .symbol{
+            text-align: center;
+        }
+        #openb{
+            margin: 8px 5px 5px;
+        }
+        #ans{
+            margin: 8px 5px 5px;
+        }
+        .input{
+            margin: 10px;
+            margin-left: 28px;
+            margin-top: 27px;
+            height: 75px;
+            width: 340px;
+            border: 1px solid gray;
+            display: flex;
+            flex-direction: column;
+            border-radius: 6px;
+            text-align: right;
+            box-sizing: content-box;
+        }
+        #input{
+            text-align: right;
+            font-size: 25px;
+            border-color: transparent;
+            margin-bottom: 5px;
+            cursor: not-allowed;
+
+            /* display: inline-block; */
+        }
+        .ansdiv{
+            width: 340px;
+            text-align: center;
+            margin-left: 3px;
+            /* box-sizing: content-box; */
+            /* display: flex; */
+
+        }
+        #res{
+            width:315px;
+            box-sizing: content-box;
+            margin-left: 25px;
+        }
+        #input:focus{
+            outline: none;
+        }
+        .character:hover{
+            border: 1px solid rgb(124, 124, 124);
+        }
+    </style>
+</head>
+<body id="body">
+        <div class="box">
+            <div class="input">
+                <div>
+                    <span>Ans  </span>
+                <span id="preans" style="margin-top: 1px; margin-right: 5px;"></span>
+                </div>
+                
+                <input class="" id="input" type="text" oninput="myfun()">
+            </div>
+            <div class="items">
+                <button class="btn  btn-block character" style="background-color: rgb(233, 231, 231);" id="openb" onclick="document.getElementById('input').value +='('">(</button>
+                <button class="btn  btn-block character" style="background-color: rgb(233, 231, 231);" id="closedb" onclick="document.getElementById('input').value +=')'">)</button>
+                <button class="btn  btn-block character" style="background-color: rgb(233, 231, 231);" id="mod" onclick="document.getElementById('input').value +='%'">%</button>
+                <button class="btn  btn-block character" style="background-color: rgb(233, 231, 231);" id="clear" onclick="document.getElementById('input').value=''">AC</button>
+                <button class="btn btn-outline-secondary btn-block" id="seven" onclick="document.getElementById('input').value +='7'">7</button>
+                <button class="btn btn-outline-secondary btn-block" id="eight" onclick="document.getElementById('input').value +='8'">8</button>
+                <button class="btn btn-outline-secondary btn-block" id="nine" onclick="document.getElementById('input').value +='9'">9</button>
+                <button class="btn btn-block character" style="background-color: rgb(233, 231, 231);" id="division" onclick="document.getElementById('input').value +='/'">/</button>
+                <button class="btn btn-outline-secondary btn-block" id="four" onclick="document.getElementById('input').value +='4'">4</button>
+                <button class="btn btn-outline-secondary btn-block" id="five" onclick="document.getElementById('input').value +='5'">5</button>
+                <button class="btn btn-outline-secondary btn-block" id="six" onclick="document.getElementById('input').value +='6'">6</button>
+                <button class="btn btn-block character" style="background-color: rgb(233, 231, 231);" id="multi" onclick="document.getElementById('input').value +='*'">*</button>
+                <button class="btn btn-outline-secondary btn-block" id="one" onclick="document.getElementById('input').value +='1'">1</button>  
+                <button class="btn btn-outline-secondary btn-block" id="two" onclick="document.getElementById('input').value +='2'">2</button> 
+                <button class="btn btn-outline-secondary btn-block" id="three" onclick="document.getElementById('input').value +='3'">3</button>
+                <button class="btn btn-block character" style="background-color: rgb(233, 231, 231);" id="minus" onclick="document.getElementById('input').value +='-'">-</button>
+                <button class="btn btn-outline-secondary btn-block" id="zero" onclick="document.getElementById('input').value +='0'">0</button>
+                <button class="btn btn-outline-secondary btn-block" id="dot" onclick="document.getElementById('input').value +='.'">.</button>
+                <button class="btn btn-secondary" id="ans" onclick="calculate()" >=</button>
+                <button class="btn btn-block character" style="background-color: rgb(233, 231, 231);" id="plus" onclick="document.getElementById('input').value +='+'">+</button> 
+            </div>
+            <div style="text-align: center;" class="ansdiv">
+                <button class="btn btn-secondary"  id="res" onclick="answer()">Ans</button>
+            </div>
+       </div>
+    <script src="Calculator.js"></script>
+</body>
+</html>
